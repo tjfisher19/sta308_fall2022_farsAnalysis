@@ -1,4 +1,4 @@
-######################################
+###################################### 
 ## 
 ##  sta308_week07_github_code01.R
 ##
@@ -11,7 +11,7 @@
 ##    specifically using the fromJSON() function
 ##    to fetch data from the NHTSA FARS API
 ## 2. Provides a function that will fetches all fatal
-##    creashes in the state of Ohio from 2014 to 2020
+##    crashes in the state of Ohio from 2014 to 2020
 ##
 
 ## Load necessary libraries
@@ -95,8 +95,18 @@ glimpse(all_crashes_list[[1]]$Results[[1]])
 first_rec <- all_crashes_list[[1]]$Results[[1]] %>%
   slice(1)
 
+first_rec
+## Can look 
+first_rec$CrashDate
+## I just need th
 
+str_sub(first_rec$CrashDate, start=7, end=16)
+## Still a character string
+as.numeric(str_sub(first_rec$CrashDate, start=7, end=16))
+## Turn that into a date by using lubridate!
 
+library(lubridate)
+as_datetime(as.numeric(str_sub(first_rec$CrashDate, start=7, end=16)))
 
 #################################################
 ## Now we automate the process
