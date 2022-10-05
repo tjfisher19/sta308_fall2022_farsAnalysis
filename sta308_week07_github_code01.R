@@ -114,6 +114,7 @@ get_county_date_fatalities <- function(x) {
            Fatalities = Fatals)
 }
 
+library(lubridate)
 county_year_data_list <- lapply(all_crashes_list, get_county_date_fatalities)
 
 county_year_data <- bind_rows(county_year_data_list)
